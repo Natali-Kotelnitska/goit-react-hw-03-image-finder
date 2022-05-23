@@ -1,3 +1,9 @@
+// import fetchImages from 'services/images-api';
+import ImageGallery from './ImageGallery/ImageGallery';
+import Searchbar from './Searchbar/Searchbar';
+
+// fetchImages().then(res => console.log(res.data.hits));
+
 export const App = () => {
   return (
     <div
@@ -14,7 +20,8 @@ export const App = () => {
         // color: '#010101'
       }}
     >
-      React homework template
+      <Searchbar onSubmit={''} />
+      <ImageGallery />
     </div>
   );
 };
