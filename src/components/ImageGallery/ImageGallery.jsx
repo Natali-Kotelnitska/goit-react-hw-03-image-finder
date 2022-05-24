@@ -1,29 +1,33 @@
-import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
-import fetchImages from 'services/images-api';
 import s from './ImageGallery.module.css';
 
-export default class ImageGallery extends Component {
-  state = {
-    images: [],
-  };
-  componentDidMount() {
-    fetchImages().then(res => {
-      // console.log(res.data.hits);
-      this.setState({ images: res.data.hits });
-    });
-  }
-  render() {
-    // console.log(this.state.images);
-    return (
-      <ul className={s.imageGallery}>
-        {this.state.images.map(({ id, webformatURL, tags }) => {
-          return (
-            <ImageGalleryItem imgId={id} imageURL={webformatURL} tag={tags} />
-          );
-        })}
-      </ul>
-    );
-  }
-}
-// export default ImageGallery;
+const ImageGallery = ({ images }) => {
+  console.log(images);
+  return (
+    <ul className={s.imageGallery}>
+      {images.map(({ id, webformatURL, tags }) => {
+        return (
+          <ImageGalleryItem
+            imageURL={webformatURL}
+            tag={tags}
+            id={id}
+            key={id}
+          />
+        );
+      })}
+    </ul>
+  );
+};
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    })
+  ),
+};
+
+export default ImageGallery;
