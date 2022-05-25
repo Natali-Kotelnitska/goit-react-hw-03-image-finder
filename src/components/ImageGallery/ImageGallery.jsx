@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import s from './ImageGallery.module.css';
 
-const ImageGallery = ({ images }) => {
-  console.log(images);
+const ImageGallery = ({ images, openModal }) => {
+  // console.log(images);
   return (
     <ul className={s.imageGallery}>
       {images.map(({ id, webformatURL, tags }) => {
@@ -13,6 +13,7 @@ const ImageGallery = ({ images }) => {
             tag={tags}
             id={id}
             key={id}
+            onClick={openModal}
           />
         );
       })}
@@ -28,6 +29,7 @@ ImageGallery.propTypes = {
       tags: PropTypes.string.isRequired,
     })
   ),
+  openModal: PropTypes.func,
 };
 
 export default ImageGallery;
