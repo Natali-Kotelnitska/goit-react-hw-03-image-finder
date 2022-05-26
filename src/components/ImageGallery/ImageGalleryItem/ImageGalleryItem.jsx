@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 import s from '../ImageGallery.module.css';
 
-const ImageGalleryItem = ({ imageURL, tag, onClick }) => {
+const ImageGalleryItem = ({ url, tag, openModal, largeImageURL }) => {
   return (
     <li className={s.imageGalleryItem}>
       <img
-        onClick={onClick}
-        src={imageURL}
-        alt={tag}
+        onClick={() => openModal(tag, largeImageURL)}
+        src={url}
+        alt={tag || 'image'}
+        loading="lazy"
+        // width="780"
         className={s.imageGalleryItemImage}
       />
     </li>
@@ -15,8 +17,9 @@ const ImageGalleryItem = ({ imageURL, tag, onClick }) => {
 };
 
 ImageGalleryItem.propTypes = {
-  imageURL: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  openModal: PropTypes.func,
+  largeImageURL: PropTypes.string.isRequired,
 };
 export default ImageGalleryItem;
