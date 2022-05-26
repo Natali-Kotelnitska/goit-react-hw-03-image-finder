@@ -41,30 +41,3 @@ export default class Modal extends Component {
     );
   }
 }
-
-// const Modal = ({ onModalClick, largeImg, altTag }) => {
-//   window.addEventListener('keydown', e => {
-//     if (e.code === 'ESCAPE') {
-//       console.log(e.code);
-//       onModalClick();
-//     }
-//   });
-
-//   return (
-//     <div className={s.overlay} onClick={() => onModalClick()}>
-//       <div className={s.modal}>
-//         {/* {this.props.children} */}
-//         <img src={largeImg} alt={altTag} className={s.modalImg} />
-//       </div>
-//     </div>
-//   );
-// };
-
-// Close modal on ESC
-// function onClose(e) {
-//   if (e.code === 'ESCAPE') {
-//     onModalClick();
-//   }
-// }
-
-// export default Modal;

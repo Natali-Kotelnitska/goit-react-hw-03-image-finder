@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FcSearch } from 'react-icons/fc';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import s from './Searchbar.module.css';
 
@@ -22,6 +24,9 @@ export default class Searchbar extends Component {
 
     e.preventDefault();
 
+    if (this.state.searchQuery.trim() === '') {
+      toast.warn('Please, enter a search term');
+    }
     onSubmit(searchQuery);
     this.setState({ searchQuery: '' });
   };
@@ -32,6 +37,7 @@ export default class Searchbar extends Component {
       <header className={s.searchbar}>
         <form onSubmit={this.handleSubmit} className={s.searchForm}>
           <button type="submit" className={s.searchFormButton}>
+            <FcSearch size="29px" />
             <span className={s.searchFormButtonLabel}>Search</span>
           </button>
 
