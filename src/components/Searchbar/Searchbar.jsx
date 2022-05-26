@@ -24,7 +24,7 @@ export default class Searchbar extends Component {
 
     e.preventDefault();
 
-    if (this.state.searchQuery.trim() === '') {
+    if (searchQuery.trim() === '') {
       toast.warn('Please, enter a search term');
     }
     onSubmit(searchQuery);

@@ -33,28 +33,27 @@ export default class App extends Component {
 
   fetchGallery = () => {
     const { searchQuery, page } = this.state;
-    setTimeout(() => {
-      fetchImages(searchQuery, page)
-        .then(res => {
-          const nextImages = mapper(res.data.hits);
 
-          if (!res.data.hits.length) {
-            this.setState({ images: [] });
+    fetchImages(searchQuery, page)
+      .then(res => {
+        const nextImages = mapper(res.data.hits);
 
-            toast.error('Sorry, image not found.');
-            return;
-          }
+        if (!res.data.hits.length) {
+          this.setState({ images: [] });
 
-          this.setState(prevState => ({
-            images: [...prevState.images, ...nextImages],
-          }));
-        })
-        .catch(error => {
-          this.setState({ error });
-          toast.error('Something went wrong');
-        })
-        .finally(() => this.setState({ loading: false }));
-    }, 1000);
+          toast.error('Sorry, image not found.');
+          return;
+        }
+
+        this.setState(prevState => ({
+          images: [...prevState.images, ...nextImages],
+        }));
+      })
+      .catch(error => {
+        this.setState({ error });
+        toast.error('Something went wrong');
+      })
+      .finally(() => this.setState({ loading: false }));
   };
 
   handleFormSubmit = searchQuery => {
