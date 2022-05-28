@@ -93,9 +93,13 @@ export default class App extends Component {
         }}
       >
         <Searchbar onSubmit={this.handleFormSubmit} />
-        {loading && <Loader />}
+
         {error && <Error message={error.message} />}
-        <ImageGallery images={images} onOpenModal={this.openModal} />
+        {images.length && (
+          <ImageGallery images={images} onOpenModal={this.openModal} />
+        )}
+        {/* <ImageGallery images={images} onOpenModal={this.openModal} /> */}
+        {loading && <Loader />}
         {images.length > 11 && <Button onBtnClick={this.onLoadBtnClick} />}
         {showModal && (
           <Modal
