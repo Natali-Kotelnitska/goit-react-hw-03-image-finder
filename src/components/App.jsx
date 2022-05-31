@@ -57,9 +57,7 @@ export default class App extends Component {
   };
 
   handleFormSubmit = searchQuery => {
-    this.setState({ searchQuery });
-    this.setState({ images: [] });
-    this.setState({ page: 1 });
+    this.setState({ page: 1, images: [], searchQuery });
   };
 
   onLoadBtnClick = () => {
@@ -70,8 +68,10 @@ export default class App extends Component {
 
   openModal = (tag, largeImageURL) => {
     this.toggleModal();
-    this.setState({ largeImage: largeImageURL });
-    this.setState({ tag: tag });
+    this.setState({
+      largeImage: largeImageURL,
+      tag: tag,
+    });
   };
 
   toggleModal = () => {

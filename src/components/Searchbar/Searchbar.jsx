@@ -28,7 +28,10 @@ export default class Searchbar extends Component {
       toast.warn('Please, enter a search term');
     }
     onSubmit(searchQuery);
-    this.setState({ searchQuery: '' });
+    this.setState({
+      searchQuery: e.target.elements.searchQuery.value,
+    });
+    // this.setState({ searchQuery: '' });
   };
 
   render() {
